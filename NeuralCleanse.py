@@ -25,8 +25,8 @@ import matplotlib.pyplot as plt
 # ------------------------------
 # !!! --- 사용자 환경에 맞게 경로를 수정하세요 --- !!!
 # GTSRB 데이터셋의 실제 경로로 변경해야 합니다.
-IMG_DIR = r"C:\Users\aj412\GTSRB\Final_Test\Images"
-LABEL_CSV = r"C:\Users\aj412\GTSRB\GT-final_test.csv"
+IMG_DIR = r"실제 경로"
+LABEL_CSV = r"실제 경로"
 TARGET_LABEL = 0 # 백도어 공격의 타겟 레이블
 # !!! ---------------------------------------- !!!
 
@@ -401,3 +401,4 @@ print("\n[학습 완료]")
 # ------------------------------
 # GTSRB는 43개 클래스를 가집니다.
 nc_acc, nc_time = run_neural_cleanse(model, test_clean_loader, num_classes=43, device=device)
+
