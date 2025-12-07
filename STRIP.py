@@ -19,8 +19,8 @@ import time # 탐지 속도 측정을 위해 time 라이브러리 추가
 # 상수 정의 및 실시간 탐지 최적화 설정
 # ------------------------------
 # 경로 (사용자 환경에 맞게 변경 필요)
-IMG_DIR = r"C:\Users\aj412\GTSRB\Final_Test\Images"
-LABEL_CSV = r"C:\Users\aj412\GTSRB\GT-final_test.csv"
+IMG_DIR = r"경로 설정"
+LABEL_CSV = r"경로 설정"
 TARGET_LABEL = 0 
 
 # <<<< 실시간 탐지 속도 최적화 설정 >>>>
@@ -300,7 +300,8 @@ detection_accuracy = calculate_detection_accuracy(
 print("\n" + "="*60)
 print("             *** STRIP 실시간 탐지 결과 요약 ***")
 print("="*60)
-print(f"**[STRIP 탐지 정확도 (TPR)]:**  {detection_accuracy:.2f}% (임계값: {STRIP_THRESHOLD})")
-print(f"**[총 탐지 소요 시간]:**         {total_detection_time:.4f} 초 ({total_samples} 샘플 기준)")
-print(f"**[샘플당 평균 처리 속도]:**     {time_per_sample * 1000:.2f} ms/샘플")
+print(f"[STRIP 탐지 정확도 (TPR)]:  {detection_accuracy:.2f}% (임계값: {STRIP_THRESHOLD})")
+print(f"[총 탐지 소요 시간]:         {total_detection_time:.4f} 초 ({total_samples} 샘플 기준)")
+print(f"[샘플당 평균 처리 속도]:     {time_per_sample * 1000:.2f} ms/샘플")
+
 print("="*60)
