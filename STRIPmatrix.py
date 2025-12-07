@@ -21,8 +21,8 @@ import matplotlib.pyplot as plt # 시각화를 위해 추가
 # 상수 정의 및 실시간 탐지 최적화 설정
 # ------------------------------
 # 경로 (실제 데이터셋이 없는 환경에서도 실행 가능하도록 더미 경로 설정)
-IMG_DIR = r"C:\Users\aj412\GTSRB\Final_Test\Images"
-LABEL_CSV = r"C:\Users\aj412\GTSRB\GT-final_test.csv"
+IMG_DIR = r"경로 설정"
+LABEL_CSV = r"경로 설정"
 TARGET_LABEL = 0 
 
 # <<<< 실시간 탐지 속도 최적화 설정 >>>>
@@ -379,7 +379,7 @@ plt.show()
 
 # 4. 결과 출력 (오분류표 형식으로 수정)
 print("\n" + "="*70)
-print("                      *** STRIP 실시간 탐지 분석 ***")
+print("                       STRIP 실시간 탐지 분석 ")
 print("                      (엔트로피 임계값: %.2f)" % STRIP_THRESHOLD)
 print("-" * 70)
 print("Actual |    Predicted: Backdoor (Detected) |  Predicted: Clean (Rejected) |")
@@ -388,8 +388,9 @@ print(f"Backdoor|           {TP:6d} (TP)          |           {FN:6
 print("-" * 70)
 print(f"Clean |           {FP:6d} (FP)          |           {TN:6d} (TN)         |")
 print("-" * 70)
-print(f"\n**[백도어 탐지 정확도 (TPR)]:**    {TPR:.2f}% (TP / Actual Backdoor)")
-print(f"**[클린 오탐지율 (FPR)]:**        {FPR:.2f}% (FP / Actual Clean)")
-print(f"**[총 탐지 소요 시간]:**          {total_detection_time:.4f} 초 ({total_used_samples} 샘플 기준)")
-print(f"**[샘플당 평균 처리 속도]:**      {time_per_sample * 1000:.2f} ms/샘플")
+print(f"\n[백도어 탐지 정확도 (TPR)]:    {TPR:.2f}% (TP / Actual Backdoor)")
+print(f"[클린 오탐지율 (FPR)]:        {FPR:.2f}% (FP / Actual Clean)")
+print(f"[총 탐지 소요 시간]:          {total_detection_time:.4f} 초 ({total_used_samples} 샘플 기준)")
+print(f"[샘플당 평균 처리 속도]:      {time_per_sample * 1000:.2f} ms/샘플")
 print("="*70)
+
