@@ -262,9 +262,9 @@ def evaluate_ac_detection(model, dataloader, device, target_label, use_pca=True,
     print(f"Non-B. |     {FP_VIRTUAL:7d} (False Positive) |      {TN_VIRTUAL:7d} (True Negative)   |")
     print("-" * 70)
     
-    print(f"\n**[AC 탐지 정확도 (Recall)]:** {detection_accuracy*100:.2f}% (TP / (TP+FN))")
-    print(f"**[AC 탐지 속도 (Total)]:** {detection_time:.4f} 초")
-    print(f"**[샘플당 탐지 속도]:** {time_per_sample * 1000:.2f} ms/샘플 ({total_backdoor_samples} 샘플 기준)")
+    print(f"\n[AC 탐지 정확도 (Recall)]: {detection_accuracy*100:.2f}% (TP / (TP+FN))")
+    print(f"[AC 탐지 속도 (Total)]: {detection_time:.4f} 초")
+    print(f"[샘플당 탐지 속도]: {time_per_sample * 1000:.2f} ms/샘플 ({total_backdoor_samples} 샘플 기준)")
     print("="*70)
     
     return detection_accuracy, detection_time
@@ -273,8 +273,8 @@ def evaluate_ac_detection(model, dataloader, device, target_label, use_pca=True,
 # 메인 실행: 모델 학습 및 AC 탐지 수행
 # ------------------------------
 # !!! --- 사용자 환경에 맞게 경로를 수정하세요 --- !!!
-img_dir = r"C:\Users\aj412\GTSRB\Final_Test\Images"
-label_csv = r"C:\Users\aj412\GTSRB\GT-final_test.csv"
+img_dir = r"경로 설정"
+label_csv = r"경로 설정"
 target_label = 0 
 # !!! ---------------------------------------- !!!
 
@@ -320,4 +320,5 @@ print("\n[학습 완료]")
 # AC 탐지 실행 및 최종 출력
 # ------------------------------
 print(f"\n[AC 탐지 수행 중 - {N_AC_SAMPLES}개 샘플 분석]")
+
 ac_acc, ac_time = evaluate_ac_detection(model, test_backdoor_loader, device, target_label, use_pca=USE_PCA, pca_dims=PCA_DIMS)
