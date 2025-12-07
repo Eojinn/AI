@@ -19,8 +19,8 @@ import copy # 모델 복사를 위해 copy 모듈 임포트
 # 상수 정의 및 실시간 방어 최적화 설정
 # ------------------------------
 # 경로 (실제 데이터셋이 없는 환경에서도 실행 가능하도록 더미 경로 설정)
-IMG_DIR = r"C:\Users\aj412\GTSRB\Final_Test\Images"
-LABEL_CSV = r"C:\Users\aj412\GTSRB\GT-final_test.csv"
+IMG_DIR = r"경로 설정"
+LABEL_CSV = r"경로 설정"
 TARGET_LABEL = 0 
 
 # <<<< 실시간 방어 속도 최적화 설정 >>>>
@@ -307,12 +307,12 @@ def measure_pruned_model_inference(model, loader, device, total_samples):
     
     # 결과 출력 (요청된 형식)
     print("\n" + "="*60)
-    print("      *** Fine-Pruning 방어 후 순수 추론 성능 분석 ***")
+    print("       Fine-Pruning 방어 후 순수 추론 성능 분석 ")
     print("      (가지치기된 모델의 클린 데이터에 대한 예측 속도 측정)")
     print("="*60)
-    print(f"**[탐지 정확도 (클린 정확도)]:**    {detection_accuracy:.2f}%")
-    print(f"**[총 추론 시간]:**              {inference_time:.4f} 초")
-    print(f"**[샘플당 추론 속도]:**          {time_per_sample * 1000:.2f} ms/샘플 ({total_samples} 샘플 기준)")
+    print(f"[탐지 정확도 (클린 정확도)]:    {detection_accuracy:.2f}%")
+    print(f"[총 추론 시간]:              {inference_time:.4f} 초")
+    print(f"[샘플당 추론 속도]:          {time_per_sample * 1000:.2f} ms/샘플 ({total_samples} 샘플 기준)")
     print("="*60)
     
     return detection_accuracy, inference_time
@@ -351,7 +351,7 @@ for epoch in range(5):
     train(model, train_loader, optimizer, criterion, device)
 clean_acc_pre = evaluate(model, test_clean_loader, device)
 asr_pre = evaluate(model, test_backdoor_loader, device)
-print(f"**[학습 완료]** Clean Acc (Pruning 전): {clean_acc_pre:.2f}%, ASR (Pruning 전): {asr_pre:.2f}%")
+print(f"[학습 완료] Clean Acc (Pruning 전): {clean_acc_pre:.2f}%, ASR (Pruning 전): {asr_pre:.2f}%")
 
 # 3. Fine-Pruning 방어 기법 적용
 print(f"\n[Fine-Pruning 방어 적용 중... (미세조정 {FP_FINETUNE_EPOCHS} 에포크)]")
@@ -369,7 +369,8 @@ fine_tune(pruned_model, train_loader, device, epochs=FP_FINETUNE_EPOCHS)
 
 defense_end_time = time.time()
 defense_time = defense_end_time - defense_start_time
-print(f"\n**[총 방어 (Pruning + Fine-tuning) 소요 시간]:** {defense_time:.4f} 초")
+print(f"\n[총 방어 (Pruning + Fine-tuning) 소요 시간]: {defense_time:.4f} 초")
 
 # 4. 방어된 모델 (Pruned Model)의 순수 추론 속도 및 정확도 측정
 measure_pruned_model_inference(pruned_model, test_clean_loader, device, total_test_samples)
+
