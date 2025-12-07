@@ -25,8 +25,8 @@ import matplotlib.pyplot as plt
 # ------------------------------
 # !!! --- 사용자 환경에 맞게 경로를 수정하세요 --- !!!
 # GTSRB 데이터셋의 실제 경로로 변경해야 합니다.
-IMG_DIR = r"실제 경로"
-LABEL_CSV = r"실제 경로"
+IMG_DIR = r"경로 설정"
+LABEL_CSV = r"경로 설정"
 TARGET_LABEL = 0 # 백도어 공격의 타겟 레이블
 # !!! ---------------------------------------- !!!
 
@@ -358,8 +358,8 @@ def run_neural_cleanse(model, dataloader, num_classes=43, device=None, threshold
     print(f"-> 이상치로 탐지된 클래스: {detected_classes.tolist()}")
     
     print("-" * 80)
-    print(f"**[최종 백도어 탐지 정확도 (Recall)]:** {detection_accuracy*100:.2f}%")
-    print(f"**[Neural Cleanse 탐지 총 시간]:** {detection_time_ms:.4f} ms")
+    print(f"[최종 백도어 탐지 정확도 (Recall)]: {detection_accuracy*100:.2f}%")
+    print(f"[Neural Cleanse 탐지 총 시간]: {detection_time_ms:.4f} ms")
     print("="*80)
     
     return detection_accuracy, detection_time
@@ -401,4 +401,5 @@ print("\n[학습 완료]")
 # ------------------------------
 # GTSRB는 43개 클래스를 가집니다.
 nc_acc, nc_time = run_neural_cleanse(model, test_clean_loader, num_classes=43, device=device)
+
 
