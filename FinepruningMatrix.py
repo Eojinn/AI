@@ -23,8 +23,8 @@ import torch.nn.functional as F
 # ------------------------------
 # 경로 (실제 데이터셋이 없는 환경에서도 실행 가능하도록 더미 경로 설정)
 # !!! 중요: 이 경로를 실제 GTSRB 데이터셋 경로로 변경해야 코드가 실행됩니다. !!!
-IMG_DIR = r"C:\Users\aj412\GTSRB\Final_Test\Images" 
-LABEL_CSV = r"C:\Users\aj412\GTSRB\GT-final_test.csv"
+IMG_DIR = r"경로 설정" 
+LABEL_CSV = r"경로 설정"
 TARGET_LABEL = 0 
 
 # <<<< 실시간 방어 속도 최적화 설정 >>>>
@@ -361,9 +361,9 @@ def measure_pruned_model_inference(model, loader, device):
     print("-" * 70)
     
     # 4. 추론 속도 및 정확도 요약 출력
-    print(f"\n**[방어 후 전체 클린 정확도]**: {detection_accuracy:.2f}%")
-    print(f"**[총 추론 시간]:**              {inference_time:.4f} 초")
-    print(f"**[샘플당 추론 속도]:**          {time_per_sample * 1000:.2f} ms/샘플 ({total_samples} 샘플 기준)")
+    print(f"\n[방어 후 전체 클린 정확도]: {detection_accuracy:.2f}%")
+    print(f"[총 추론 시간]:              {inference_time:.4f} 초")
+    print(f"[샘플당 추론 속도]:          {time_per_sample * 1000:.2f} ms/샘플 ({total_samples} 샘플 기준)")
     print("="*70)
     
     return detection_accuracy, inference_time
@@ -407,7 +407,7 @@ for epoch in range(5):
     train(model, train_loader, optimizer, criterion, device)
 clean_acc_pre = evaluate(model, test_clean_loader, device)
 asr_pre = evaluate(model, test_backdoor_loader, device)
-print(f"**[학습 완료]** Clean Acc (Pruning 전): {clean_acc_pre:.2f}%, ASR (Pruning 전): {asr_pre:.2f}%")
+print(f"[학습 완료] Clean Acc (Pruning 전): {clean_acc_pre:.2f}%, ASR (Pruning 전): {asr_pre:.2f}%")
 
 # 3. Fine-Pruning 방어 기법 적용
 print(f"\n[Fine-Pruning 방어 적용 중... (미세조정 {FP_FINETUNE_EPOCHS} 에포크)]")
@@ -430,3 +430,4 @@ print(f"\n**[총 방어 (Pruning + Fine-tuning) 소요 시간]:** {defense_time:
 
 # 4. 방어된 모델 (Pruned Model)의 순수 추론 속도 및 정확도 측정 (수정된 함수 호출)
 measure_pruned_model_inference(pruned_model, test_clean_loader, device)
+
