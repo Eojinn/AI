@@ -18,8 +18,8 @@ import time # 탐지 속도 측정을 위해 time 라이브러리 추가
 # 상수 정의 및 최적화 설정
 # ------------------------------
 # 경로 (사용자 환경에 맞게 변경 필요)
-IMG_DIR = r"C:\Users\aj412\GTSRB\Final_Test\Images"
-LABEL_CSV = r"C:\Users\aj412\GTSRB\GT-final_test.csv"
+IMG_DIR = r"경로 설정"
+LABEL_CSV = r"경로 설정"
 TARGET_LABEL = 0 
 
 # <<<< 실시간 추론 속도 최적화 설정 >>>>
@@ -194,12 +194,12 @@ def run_detection_analysis(model, train_loader, test_clean_loader, device):
     
     # 4. 결과 출력
     print("\n" + "="*60)
-    print("      *** CNN 순수 추론 성능 분석 결과 ***")
+    print("       CNN 순수 추론 성능 분석 결과 ")
     print("      (백도어 탐지 기법 없이 기반 모델의 예측 속도만 측정)")
     print("="*60)
-    print(f"**[탐지 정확도 (클린 정확도)]:**    {detection_accuracy:.2f}%")
-    print(f"**[총 추론 시간]:**              {detection_time:.4f} 초")
-    print(f"**[샘플당 추론 속도]:**          {time_per_sample * 1000:.2f} ms/샘플 ({total} 샘플 기준)")
+    print(f"[탐지 정확도 (클린 정확도)]:    {detection_accuracy:.2f}%")
+    print(f"[총 추론 시간]:              {detection_time:.4f} 초")
+    print(f"[샘플당 추론 속도]:          {time_per_sample * 1000:.2f} ms/샘플 ({total} 샘플 기준)")
     print("="*60)
     
     return detection_accuracy, detection_time
@@ -223,4 +223,5 @@ device = torch.device('cuda' if torch.cuda.is_available() else 'cpu')
 model = SimpleCNN().to(device)
 
 # 탐지 분석 실행
+
 run_detection_analysis(model, train_loader, test_clean_loader, device)
